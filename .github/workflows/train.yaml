@@ -19,6 +19,10 @@ jobs:
 
       - name: Install dependencies
         run: pip install -r requirements.txt
-  
+
       - name: run the training script
+        id: train-model
         run: python train.py
+
+      - name: publish metrics
+        run: echo "accuracy=" ${{ steps.train-model.outputs.accuracy }}
