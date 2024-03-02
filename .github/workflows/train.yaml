@@ -26,3 +26,22 @@ jobs:
 
       - name: publish metrics
         run: echo "accuracy=" ${{ steps.train-model.outputs.accuracy }}
+      
+      - name: Upload metrics
+        uses: actions/upload-artifact@v3
+        with:
+          name: model-metrics
+          path: metrics
+  
+  print-metrics:
+    runs-on: ubuntu-latest
+    needs: [train-model]
+    steps:
+      - name: Download metrics
+        uses: actions/download-artifact@v3
+        with:
+          name: model-metrics
+          path: metrics
+
+      - name: Print metrics
+        run: cat metrics/metrics.json

@@ -24,7 +24,7 @@ accuracy = accuracy_score(y_test, y_pred)
 print(f"accuracy={accuracy}")
 
 # write metrics to json in root directory
-with open('./metrics.json', 'w') as outfile:
+with open('metrics/metrics.json', 'w') as outfile:
     json.dump({"accuracy": accuracy}, outfile)
 
 
