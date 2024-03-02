@@ -22,7 +22,7 @@ jobs:
 
       - name: run the training script
         id: train-model
-        run: python train.py
+        run: bash run.sh
 
       - name: publish metrics
         run: echo "accuracy=" ${{ steps.train-model.outputs.accuracy }}
