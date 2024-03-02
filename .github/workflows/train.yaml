@@ -1,4 +1,4 @@
-name: "01 Hello World"
+name: "ML training"
 
 on:
   workflow_dispatch:  # This event triggers the workflow manually
@@ -10,3 +10,14 @@ jobs:
     steps:
       - name: Echo Hello World
         run: echo "Hello, World!"
+
+      - name: Checkout the code
+        uses: actions/checkout@v4  
+
+      - name: Set up Python 3.8
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+
+      - name: run the training script
+        run: python train.py
