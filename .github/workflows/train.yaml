@@ -4,6 +4,16 @@ on:
   workflow_dispatch:  # This event triggers the workflow manually
 
 jobs:
+  download_dataset:
+    runs-on: ubuntu-latest  # The runner environment (Ubuntu in this case)
+
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v4  # This action checks out the code from the repository
+
+      - name: Download the dataset
+        run: python download_dataset.py  # This command runs the download_dataset.py script
+  
   train-model:
     runs-on: ubuntu-latest  # The runner environment (Ubuntu in this case)
 
@@ -18,8 +28,6 @@ jobs:
 
       - name: Install dependencies
         run: pip install -r requirements.txt
-
-      
 
       - name: run the training script
         run: python train.py
