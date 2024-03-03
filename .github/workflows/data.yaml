@@ -24,6 +24,8 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pip-
 
+      - run: echo "Cache key: ${{ steps.cache-python.outputs.key }}"
+
       - name: Install dependencies
         run: pip install -r requirements.txt
 
