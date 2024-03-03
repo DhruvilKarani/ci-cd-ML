@@ -4,7 +4,7 @@ on:
   workflow_dispatch:  # This event triggers the workflow manually
 
 jobs:
-  train-model:
+  process-data:
     runs-on: ubuntu-latest # The runner environment (Ubuntu in this case You can replace it with self-hosted)
 
     steps:
@@ -15,6 +15,14 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: 3.9
+
+      - name: Cache Python dependencies
+        uses: actions/cache@v2
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
 
       - name: Install dependencies
         run: pip install -r requirements.txt
