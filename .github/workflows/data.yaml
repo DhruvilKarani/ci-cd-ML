@@ -24,7 +24,7 @@ jobs:
 
       - name: Download sample data
         run: python download_data.py --source-path "s3://my-bucket/data" --destination-dir ${{ github.workspace }}/data --sample
-        timeout-minutes: 1
+        timeout-minutes: 10
 
       - name: Pre-process sample data
         run: preprocess.py --input-dir ${{ github.workspace }}/data --output-dir ${{ github.workspace }}/processed_data --sample

@@ -25,5 +25,4 @@ if __name__ == "__main__":
     parser.add_argument("--sample", action="store_true", help="sample data")
     args = parser.parse_args()
     download_data(args.source_path, args.destination_dir, args.sample)
-    import time; time.sleep(61)
     # 
