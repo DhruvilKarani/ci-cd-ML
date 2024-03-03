@@ -6,7 +6,7 @@ on:
 jobs:
 
   train-model:
-    runs-on: ubuntu-latest  # The runner environment (Ubuntu in this case)
+    runs-on: self-hosted  # The runner environment (Ubuntu in this case)
 
     steps:
       - name: Checkout the code
@@ -19,6 +19,9 @@ jobs:
 
       - name: Install dependencies
         run: pip install -r requirements.txt
+
+      - name:  Pre-process data
+        run: preprocess.py
 
       - name: run the training script
         id: train-model
