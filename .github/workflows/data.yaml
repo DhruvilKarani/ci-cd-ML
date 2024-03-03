@@ -5,7 +5,7 @@ on:
 
 jobs:
   train-model:
-    runs-on: self-hosted # The runner environment (self-hosted in this case)
+    runs-on: ubuntu-latest # The runner environment (Ubuntu in this case You can replace it with self-hosted)
 
     steps:
       - name: Checkout the code from the branch
